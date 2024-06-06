@@ -12,6 +12,8 @@ void printGame(char arr[][3]) {
 }
 
 bool result(char arr[][3], char player) {
+  int diagonalOneSum = 0;
+  int diagonalTwoSum = 0;
   for (int i = 0; i < 3; i++) {
     int sumHorizon = 0;
     int sumVertical = 0;
@@ -23,15 +25,17 @@ bool result(char arr[][3], char player) {
       if (arr[j][i] == player) {
         sumVertical++;
       }
+      if (i == j && arr[i][j] == player) {
+        diagonalOneSum++;
+      }
+      if (i == 2 - j && arr[i][j] == player) {
+        diagonalTwoSum++;
+      }
     }
 
-    if (sumHorizon == 3 || sumVertical == 3) {
+    if (sumHorizon == 3 || sumVertical == 3 || diagonalOneSum == 3 || diagonalTwoSum == 3) {
       return true;
     }
-  }
-  if (arr[1][1] == player && (arr[0][0] == player && arr[2][2] == player ||
-                              arr[2][0] == player && arr[0][2] == player)) {
-    return true;
   }
   return false;
 }
