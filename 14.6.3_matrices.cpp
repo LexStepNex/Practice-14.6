@@ -42,11 +42,11 @@ int main() {
   std::cout << "Compare matrices\n";
 
   int one[4][4];
-  std::cout << "Input one matrices 4x4: ";
+  std::cout << "Input one matrix 4x4: ";
   input_matrices(one);
   
   int two[4][4];
-  std::cout << "Input two matrices 4x4: ";
+  std::cout << "Input two matrix 4x4: ";
   input_matrices(two);
 
   if (!compare(one, two)) {
