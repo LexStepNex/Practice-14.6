@@ -10,6 +10,7 @@ void printArray(int arr[][5]) {
 }
 
 int main() {
+  std::cout << "Snake array\n";
   int arr[5][5];
 
   int n = 0;

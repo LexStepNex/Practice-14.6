@@ -22,7 +22,7 @@ int main() {
     }
   }
   
-  for (int x = 0; x < 5; x++) {
+  for (int x = 0; x < 5; x++) { // Для наглядности 
     for (int y = 0; y < 5; y++) {
       for (int z = 0; z < 10; z++) {
         std::cout << (z == 0 ? "{" : "") << block[x][y][z] << " ";
@@ -49,7 +49,4 @@ int main() {
 
     std::cout << "Input -1 for exit\n";
   }
-  
-  
-
 }
