@@ -42,7 +42,7 @@ int main() {
 
     for (int x = 0; x < 5; x++) {
       for (int y = 0; y < 5; y++) {
-        std::cout << (block[x][y][n] ? 1 : 0) << " ";
+        std::cout << (block[x][y][n] ? "1" : "0") << " ";
       }
       std::cout << "\n";
     }
