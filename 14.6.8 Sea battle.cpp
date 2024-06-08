@@ -59,10 +59,11 @@ void longShip(bool arr[][10], int x_1, int y_1, int x_2, int y_2) {
 
     bool controlPlace = false;
 
-    for (int i = x_1; i < x_2; i++) {
-      for (int j = y_1; j < y_2; j++) {
+    for (int i = x_1; i < x_2 + 1; i++) {
+      for (int j = y_1; j < y_2 + 1; j++) {
         if (arr[i][j] == true) {
           controlPlace = true;
+          break;
         }
       }
     }
