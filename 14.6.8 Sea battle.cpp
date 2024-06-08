@@ -27,7 +27,11 @@ void single(bool arr[][10], int x, int y) {
     std::cout << "One deck ships\n";
     std::cout << n << " ship. Enter coordinates(x:y form 0-9): ";
     std::cin >> x >> y;
-    if ((0 > x || x > 9) || (0 > y || y > 9) || arr[x][y] == true) continue;
+    if ((0 > x || x > 9) || (0 > y || y > 9) || arr[x][y] == true){
+      std::cout << "Incorrect coordinates x or y.\n"
+                << "Or the place is occupied\n";
+      continue;
+    } 
     arr[x][y] = true;
     printArray(arr);
     n++;
@@ -40,37 +44,47 @@ void longShip(bool arr[][10], int x_1, int y_1, int x_2, int y_2) {
 
   do {
     std::cout << n << "deck ship.\n";
-    std::cout << "Enter coordinates(x_1:y_1 form 0-9): ";
+    std::cout << "Enter coordinates(x1:y1 form 0-9): ";
     std::cin >> x_1 >> y_1;
-    if ((0 > x_1 || x_1 > 9) || (0 > y_1 || y_1 > 9) || arr[x_1][y_1] == true)
+    if ((0 > x_1 || x_1 > 9) || (0 > y_1 || y_1 > 9)) {
+      std::cout << "Incorrect coordinates x1 or y1\n";
       continue;
+    } 
 
-    std::cout << "Enter coordinates(x_2:y_2 form 0-9): ";
+    std::cout << "Enter coordinates(x2:y2 form 0-9): ";
     std::cin >> x_2 >> y_2;
-    if ((0 > x_2 || x_2 > 9) || (0 > y_2 || y_2 > 9) || arr[x_2][y_2] == true)
+    if ((0 > x_2 || x_2 > 9) || (0 > y_2 || y_2 > 9)){
+      std::cout << "Incorrect coordinates x2 or y2\n";
       continue;
+    } 
 
     if (x_1 != x_2 && y_1 != y_2 || x_1 == x_2 && fabs(y_2 - y_1) != n - 1 ||
-        y_1 == y_2 && fabs(x_2 - x_1) != n - 1)
+        y_1 == y_2 && fabs(x_2 - x_1) != n - 1){
+      std::cout << "The ship can only be placed vertically or horizontally.\n"
+                <<" The length of the ship should be " << n << "\n";
       continue;
+    } 
 
     if (x_1 > x_2) std::swap(x_1, x_2);
     if (y_1 > y_2) std::swap(y_1, y_2);
 
     bool controlPlace = false;
 
-    for (int i = x_1; i < x_2 + 1; i++) {
-      for (int j = y_1; j < y_2 + 1; j++) {
+    for (int i = x_1; i <= x_2; i++) {
+      for (int j = y_1; j <= y_2; j++) {
         if (arr[i][j] == true) {
           controlPlace = true;
           break;
         }
       }
     }
-    if (controlPlace) continue;
+    if (controlPlace) {
+      std::cout << "Rearrange the ship, one or more seats are already taken\n";
+      continue;
+    }
 
-    for (int i = x_1; i < x_2 + 1; i++) {
-      for (int j = y_1; j < y_2 + 1; j++) {
+    for (int i = x_1; i <= x_2; i++) {
+      for (int j = y_1; j <= y_2; j++) {
         arr[i][j] = true;
       }
     }
